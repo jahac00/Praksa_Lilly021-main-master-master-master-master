@@ -1,5 +1,3 @@
-import { Autocomplete } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
@@ -7,6 +5,7 @@ import AddToFavoritesButton from "../components/AddToFavoritesButton";
 import axios from "axios";
 import styles from "../css/searchButton.module.css";
 import classes from "../css/searchListItems.module.css";
+import MyAutocomplete from "../components/MyAutocomplete";
 
 const BartenderBeginner = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -148,57 +147,43 @@ const BartenderBeginner = () => {
   return (
     <div>
       <h3>
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
+        <MyAutocomplete
           options={glasses}
-          sx={{ width: 300 }}
           value={searchCriteria.glass}
           onChange={(event, value) =>
             setSearchCriteria({ ...searchCriteria, glass: value })
           }
-          renderInput={(params) => <TextField {...params} label="Glasses" />}
+          label="Glasses"
         />
       </h3>
       <h3>
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
+        <MyAutocomplete
           options={ingredients}
-          sx={{ width: 300 }}
           value={searchCriteria.ingredient}
           onChange={(event, value) =>
             setSearchCriteria({ ...searchCriteria, ingredient: value })
           }
-          renderInput={(params) => (
-            <TextField {...params} label="Ingridients" />
-          )}
+          label="Ingridients"
         />
       </h3>
       <h3>
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
+        <MyAutocomplete
           options={categories}
-          sx={{ width: 300 }}
           value={searchCriteria.category}
           onChange={(event, value) =>
             setSearchCriteria({ ...searchCriteria, category: value })
           }
-          renderInput={(params) => <TextField {...params} label="Category" />}
+          label="Categories"
         />
       </h3>
       <h3>
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
+        <MyAutocomplete
           options={alcoholic}
-          sx={{ width: 300 }}
           value={searchCriteria.alcohol}
           onChange={(event, value) =>
             setSearchCriteria({ ...searchCriteria, alcohol: value })
           }
-          renderInput={(params) => <TextField {...params} label="Alcohol" />}
+          label="Alcohol"
         />
       </h3>
       <div>
