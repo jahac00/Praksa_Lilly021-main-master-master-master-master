@@ -1,0 +1,28 @@
+.data-grid-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: rgb(54, 54, 54);
+}
+
+.MuiDataGrid-columnsContainer,
+.MuiDataGrid-cell {
+    color: white;
+}
+
+.header {
+    color: white;
+}
+
+.grid {
+    color: white;
+}
+
+.cell {
+    color: white;
+}
+
+li {
+    background-color: rgb(54, 54, 54);
+}
