@@ -7,6 +7,8 @@ import AddToFavoritesButton from "../components/AddToFavoritesButton";
 import axios from "axios";
 import styles from "../css/searchButton.module.css";
 import classes from "../css/searchListItems.module.css";
+import MyAutocompleteMultiple from "../components/MyAutocompleteMultiple";
+import AutocompleteSx from "../components/MyAutocompleteMultiple";
 
 const BartenderVeteran = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -174,51 +176,11 @@ const BartenderVeteran = () => {
   return (
     <div>
       <h3>
-        <Autocomplete
+        <AutocompleteSx
           disablePortal
           id="combo-box-demo"
           options={glasses}
-          sx={{
-            width: 300,
-            "& .MuiAutocomplete-input": {
-              color: "white",
-              "&:hover": {
-                borderColor: "red",
-              },
-              "&.Mui-focused": {
-                color: "red",
-                borderColor: "red",
-              },
-            },
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "white",
-            },
-            "& .MuiAutocomplete-paper": {
-              backgroundColor: "#363636",
-              color: "white",
-            },
-            "& .MuiAutocomplete-option": {
-              color: "white",
-            },
-            "& .MuiAutocomplete-option.Mui-selected": {
-              backgroundColor: "red",
-            },
-            "& .MuiAutocomplete-inputRoot": {
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "red",
-              },
-            },
-            "& .MuiFormLabel-root": {
-              color: "white",
-              "&.Mui-focused": {
-                color: "red",
-              },
-            },
-            "& .MuiChip-root": {
-              backgroundColor: "333333",
-              color: "white",
-            },
-          }}
+          sx={{}}
           multiple
           value={searchCriteria.glass}
           onChange={(event, value) =>
@@ -235,11 +197,11 @@ const BartenderVeteran = () => {
         />
       </h3>
       <h3>
-        <Autocomplete
+        <AutocompleteSx
           disablePortal
           id="combo-box-demo"
           options={ingredients}
-          sx={{ width: 300 }}
+          sx={{}}
           multiple
           value={searchCriteria.ingredient}
           onChange={(event, value) =>
@@ -251,7 +213,7 @@ const BartenderVeteran = () => {
         />
       </h3>
       <h3>
-        <Autocomplete
+        <AutocompleteSx
           disablePortal
           id="combo-box-demo"
           options={categories}
@@ -261,11 +223,11 @@ const BartenderVeteran = () => {
           onChange={(event, value) =>
             setSearchCriteria({ ...searchCriteria, category: value })
           }
-          renderInput={(params) => <TextField {...params} label="Category" />}
+          renderInput={(params) => <TextField {...params} label="Categories" />}
         />
       </h3>
       <h3>
-        <Autocomplete
+        <AutocompleteSx
           disablePortal
           id="combo-box-demo"
           options={alcoholic}
