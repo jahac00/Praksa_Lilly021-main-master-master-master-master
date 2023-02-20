@@ -4,25 +4,28 @@
     margin-bottom: 20px;
     margin-top: 20px;
     background-color: rgb(54, 54, 54);
+    color:white !important;
 }
 
 .MuiDataGrid-columnsContainer,
 .MuiDataGrid-cell {
-    color: white;
+    color: white !important;
 }
 
 .header {
-    color: white;
+    color: white !important;
 }
 
 .grid {
-    color: white;
+    color: white !important;
+    font-size: 16px !important;
 }
 
 .cell {
-    color: white;
+    color: white !important;
 }
 
-li {
+
+/* li {
     background-color: rgb(54, 54, 54);
-}
+} */
