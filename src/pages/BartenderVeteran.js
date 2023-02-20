@@ -264,6 +264,12 @@ const BartenderVeteran = () => {
                 className={classes[`cocktail-link`]}
               >
                 {cocktail.strDrink}
+
+                <img
+                  src={cocktail.strDrinkThumb}
+                  alt={cocktail.strDrink}
+                  className={classes[`cocktail-image`]}
+                />
               </NavLink>
               <AddToFavoritesButton cocktail={cocktail} />
             </li>

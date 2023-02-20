@@ -1,6 +1,8 @@
 .cocktail-list {
   background-color: lightgrey;
   padding: 10px;
+  margin-bottom: 80px !important; 
+    /* add margin to create space below last list item */
 }
 
 .cocktail-list li {
@@ -29,4 +31,43 @@
 
 .cocktail-link:hover {
     color: red;
+}
+
+.cocktail-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.3s ease-out;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.cocktail-image:hover {
+    transform: scale(0.9);
+    object-fit: cover;
+}
+
+.cocktail-image:active {
+    transform: scale(0.8);
+}
+
+.cocktail-image:after {
+    content: '';
+    display: block; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.cocktail-image:hover:after {
+    opacity: 1;
+}
+
+.cocktail-image:active:after {
+    opacity: 0;
 }
