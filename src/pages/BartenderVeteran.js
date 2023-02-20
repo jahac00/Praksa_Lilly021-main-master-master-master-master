@@ -1,4 +1,3 @@
-import { Autocomplete } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
@@ -7,7 +6,6 @@ import AddToFavoritesButton from "../components/AddToFavoritesButton";
 import axios from "axios";
 import styles from "../css/searchButton.module.css";
 import classes from "../css/searchListItems.module.css";
-import MyAutocompleteMultiple from "../components/MyAutocompleteMultiple";
 import AutocompleteSx from "../components/MyAutocompleteMultiple";
 
 const BartenderVeteran = () => {
@@ -74,12 +72,21 @@ const BartenderVeteran = () => {
 
   const handleSearch = async () => {
     const { ingredient, glass, alcohol, category } = searchCriteria;
+    if (!ingredient && !glass && !alcohol && !category) {
+      alert("You must select at least one criteria.");
+      return;
+    }
     const cocktails = await searchAllCocktails(
       ingredient,
       glass,
       alcohol,
       category
     );
+    if (!cocktails.filteredResults.length) {
+      alert("There are no cocktails with the selected criteria.");
+      setCocktails([]);
+      return;
+    }
     console.log(cocktails);
     setCocktails(cocktails);
     setFilteredResults(filteredResults);

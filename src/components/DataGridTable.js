@@ -7,8 +7,11 @@ import { fill } from "lodash";
 function DataGridTable({ endpoint }) {
   const [data, setData] = useState([]);
   const [hasImage, setHasImage] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true); // set loading to true before making the request
+
     const getData = async () => {
       await axios.get(endpoint).then((response) => {
         setData(response.data.drinks);
@@ -16,11 +19,17 @@ function DataGridTable({ endpoint }) {
           endpoint ===
             "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
         );
+        setIsLoading(false); // set loading to false after receiving the data
       });
     };
 
     getData();
   }, [endpoint]);
+
+  // show loading indicator while data is being fetched
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const rows = data.map((row, index) => {
     const newRow = {
@@ -66,14 +75,18 @@ function DataGridTable({ endpoint }) {
       className={`${styles["data-grid-container"]}`}
       style={{ height: 800, width: fill }}
     >
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={20}
-        className={styles.grid}
-        cellClassName={styles.cell}
-        rowHeight={100}
-      />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={20}
+          className={styles.grid}
+          cellClassName={styles.cell}
+          rowHeight={100}
+        />
+      )}
     </div>
   );
 }
