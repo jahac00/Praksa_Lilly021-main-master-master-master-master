@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import VideoPlayer from "../youtube/VideoPlayer";
 import AddToFavoritesButton from "../components/AddToFavoritesButton";
@@ -11,6 +11,7 @@ function CocktailDetails() {
   const [ingredients, setIngredients] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCocktail = async () => {
@@ -19,16 +20,21 @@ function CocktailDetails() {
           `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`
         );
         const [cocktail] = response.data.drinks || [];
-        const ingredients = Object.entries(cocktail || {})
-          .filter(([key, value]) => key.startsWith("strIngredient") && value)
-          .map(([key, value], index) => ({
-            name: value,
-            measure: cocktail[`strMeasure${index + 1}`],
-            image: `https://www.thecocktaildb.com/images/ingredients/${value}-Small.png`,
-          }));
-        setCocktail(cocktail);
-        setIngredients(ingredients);
-        setIsLoading(false);
+        if (!cocktail) {
+          setError("Cocktail not found");
+          setIsLoading(false);
+        } else {
+          const ingredients = Object.entries(cocktail || {})
+            .filter(([key, value]) => key.startsWith("strIngredient") && value)
+            .map(([key, value], index) => ({
+              name: value,
+              measure: cocktail[`strMeasure${index + 1}`],
+              image: `https://www.thecocktaildb.com/images/ingredients/${value}-Small.png`,
+            }));
+          setCocktail(cocktail);
+          setIngredients(ingredients);
+          setIsLoading(false);
+        }
       } catch (error) {
         setError(error.message);
         setIsLoading(false);
@@ -41,8 +47,8 @@ function CocktailDetails() {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (error && !cocktail) {
+    navigate("/cocktail-not-found");
   }
 
   return (
