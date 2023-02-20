@@ -14,12 +14,12 @@ body {
   color: #fff;
   padding: 16px;
   text-align: center;
-  z-index: 999;
+  z-index: 999 !important;
     /* add a high z-index value to ensure the footer appears on top */
 }
 
 .footer h1 {
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   text-align: left;
   font-weight: 400;

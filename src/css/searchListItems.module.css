@@ -1,7 +1,6 @@
 .cocktail-list {
-  background-color: lightgrey;
   padding: 10px;
-  margin-bottom: 80px !important; 
+  margin-bottom: 60px !important; 
     /* add margin to create space below last list item */
 }
 

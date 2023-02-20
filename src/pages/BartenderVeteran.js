@@ -256,7 +256,7 @@ const BartenderVeteran = () => {
         >
           Search
         </Button>
-        <ul>
+        <ul className={classes[`cocktail-list`]}>
           {cocktails.filteredResults?.map((cocktail) => (
             <li key={cocktail.idDrink} className={classes[`cocktail-item`]}>
               <NavLink
