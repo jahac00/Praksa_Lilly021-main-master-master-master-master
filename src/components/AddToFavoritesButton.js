@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../redux/FavoritesSlices";
-import styles from "../css/addToFavoritesButton.module.css"
+import styles from "../css/addToFavoritesButton.module.css";
 
 function AddToFavoritesButton({ cocktail }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.FavoritesSlices.items);
-  const [isChecked, setIsChecked] = useState(favorites.some((c) => c.idDrink === cocktail.idDrink));
-  
+  const [isChecked, setIsChecked] = useState(
+    favorites.some((c) => c.idDrink === cocktail.idDrink)
+  );
 
   const handleChange = (event) => {
     setIsChecked(event.target.checked);

@@ -78,11 +78,12 @@ function CocktailDetails() {
           ))}
         </ul>
       </div>
-      {/* <div className={styles["video-player-wrapper"]}>
-        <VideoPlayer cocktailName={"how to make " + cocktail.strDrink + " cocktail"} />
+      {/* <div className={classes["video-player-wrapper"]}>
+        <VideoPlayer
+          cocktailName={"how to make " + cocktail.strDrink + " cocktail"}
+        />
       </div>
-      <div className={styles["footer"]}>
-      </div> */}
+      <div className={classes["footer"]}></div> */}
     </div>
   );
 }

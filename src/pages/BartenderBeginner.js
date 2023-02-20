@@ -53,12 +53,11 @@ const BartenderBeginner = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // let cocktails = [];
-
   const handleSearch = async () => {
     const { ingredient, glass, alcohol, category } = searchCriteria;
     if (!ingredient && !glass && !alcohol && !category) {
       alert("You must select at least one criteria.");
+      setCocktails([]);
       return;
     }
     const cocktails = await searchAllCocktails(
